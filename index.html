@@ -59,8 +59,8 @@ h1 .sess{display:block;font-size:.55em;font-weight:600;color:var(--ink);letter-s
 .hchip.them{background:var(--blue-soft);color:var(--blue-ink)}
 .live{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 12px;border-radius:999px;font-size:13px}
 .live .dot{width:8px;height:8px;border-radius:50%;background:var(--line-strong)}
-.live.on .dot{background:var(--blue)
-              .banner{border:1px solid var(--blue);background:var(--blue-softer);color:var(--blue-ink);border-radius:14px;padding:12px 16px;font-size:15px}
+.live.on .dot{background:var(--blue)}
+   .banner{border:1px solid var(--blue);background:var(--blue-softer);color:var(--blue-ink);border-radius:14px;padding:12px 16px;font-size:15px}
 
 /* stats */
 .stats{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -136,7 +136,7 @@ input:disabled,select:disabled{opacity:.6}
 .segb{font:inherit;font-weight:600;font-size:14px;border:0;background:none;color:var(--muted);border-radius:10px;padding:8px 16px;cursor:pointer;min-height:38px}
 .segb.on{background:var(--blue);color:var(--on-blue)}
 .segb:disabled{opacity:.5;cursor:not-allowed}
-              .cdset{display:flex;flex-direction:column;gap:12px;align-items:center}
+   .cdset{display:flex;flex-direction:column;gap:12px;align-items:center}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips.center{justify-content:center}
 .pchip{font:inherit;font-weight:600;font-size:14px;border:1.5px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;min-height:36px}
@@ -214,7 +214,7 @@ input:disabled,select:disabled{opacity:.6}
 .mstat.seen{color:var(--blue-ink);font-weight:600}
 .vt{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-              @media (min-width:901px){.sounds .sgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+   @media (min-width:901px){.sounds .sgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .snd{font:inherit;font-weight:600;display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:16px;padding:12px 14px;cursor:pointer;min-height:56px;text-align:left}
 .snd .se{font-size:1.6rem;line-height:1}
 .snd:hover{background:var(--blue-softer)}
@@ -294,7 +294,98 @@ th{font-weight:600;color:var(--muted);font-size:12.5px}
 .wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
 .sticky{border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;min-height:110px;min-width:0}
 .sticky.pink{background:var(--pink-soft);color:var(--pink-ink)}
-              <p class="note">Both of you see the same clock. A chime plays when a countdown ends. Break time is not counted as study time.</p>
+   .sticky.blue{background:var(--blue-soft);color:var(--blue-ink)}
+.sticky p{overflow-wrap:anywhere;font-weight:500;flex:1}
+.sfoot{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px;font-weight:600}
+.sticky .x{color:inherit;width:30px;height:30px}
+
+/* status pills, chat extras, player layout, invite */
+.spill{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;border-radius:999px;padding:6px 14px;max-width:100%}
+.spill.me{background:var(--pink-soft);color:var(--pink-ink)}
+.spill.them{background:var(--blue-soft);color:var(--blue-ink)}
+.sd{width:10px;height:10px;border-radius:50%;flex:none;background:#9AA0B8}
+.sd.on{background:#1F9D55}
+.sd.away{background:#E0A100}
+.odot.on{background:#1F9D55}
+.odot.away{background:#E0A100}
+.typing{font-size:13px;color:var(--muted);min-height:1.2em}
+.mhead{display:flex;align-items:center;gap:6px}
+.delmsg{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:0 4px;border-radius:6px}
+.delmsg:hover:not(:disabled){color:var(--ink);background:var(--surface)}
+.reacts{display:flex;gap:4px;flex-wrap:wrap}
+.msg.me .reacts{justify-content:flex-end}
+.rx{font:inherit;font-size:13px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:1px 8px;cursor:pointer;line-height:1.6;color:var(--ink)}
+.rx.mine{border-color:var(--pink);background:var(--pink-soft)}
+.rx.add{color:var(--muted)}
+.rx:disabled{opacity:.5;cursor:not-allowed}
+.reactbar{display:flex;gap:4px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:3px 6px}
+.ytwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.ytcol{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (max-width:900px){.ytwrap{grid-template-columns:minmax(0,1fr)}}
+.sub3{font-size:15px;font-weight:600;color:var(--muted)}
+.steps{margin:0;padding-left:1.3em;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:4px}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:15px;z-index:30;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion: reduce){.status.running::before{animation:none}.pfill,.cb::after,.gfill{transition:none}}
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="hero-l">
+      <div class="pair" aria-hidden="true"><span>🐌</span><span>🐦</span></div>
+      <div>
+        <h1><span class="n1">SNAILLLY</span> <span class="amp">&amp;</span> <span class="n2">BIRDDIIEE</span> <span class="sess">studdyyying session</span></h1>
+        <p class="dateline" id="dateLine"></p>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="here" id="here" aria-label="Here now"></div>
+      <div class="live" id="live"><span class="dot"></span><span id="liveText">Connecting</span></div>
+    </div>
+  </header>
+  <div class="banner" id="banner" role="status" hidden></div>
+
+  <section class="stats" aria-label="Today at a glance">
+    <div class="tile p"><span class="te" aria-hidden="true">⏱️</span><div class="tbody"><div class="tl">Studied today</div><div class="tv" id="sToday">0m</div></div></div>
+    <div class="tile b"><span class="te" aria-hidden="true">✅</span><div class="tbody"><div class="tl">Targets done</div><div class="tv" id="sDone">0 of 0</div></div></div>
+    <div class="tile p"><span class="te" aria-hidden="true">🔥</span><div class="tbody"><div class="tl">Day streak</div><div class="tv" id="sStreak">0</div></div></div>
+    <div class="tile b"><span class="te" aria-hidden="true">🎯</span><div class="tbody"><div class="tl">Daily goal</div><div class="tv" id="sGoal">0%</div>
+      <div class="gbar"><div class="gfill" id="gFill"></div></div>
+      <label class="goalrow" for="goalIn">Goal <input type="number" id="goalIn" min="0.5" max="16" step="0.5" value="2"> hours</label></div></div>
+  </section>
+
+  <div class="board">
+    <section class="card timer" aria-labelledby="timerH">
+      <div class="card-head"><h2 id="timerH"><span class="hb p" aria-hidden="true">⏱️</span>Timer</h2><span class="status" id="timerStatus">Ready</span></div>
+      <div class="seg" role="group" aria-label="Timer type">
+        <button type="button" class="segb on" id="modeSw">Stopwatch</button>
+        <button type="button" class="segb" id="modeCd">Countdown</button>
+      </div>
+      <div class="cdset" id="cdSet" hidden>
+        <div class="chips center" id="presetChips"></div>
+        <form class="cdform" id="cdForm" autocomplete="off">
+          <label for="cdH">Hours<input type="number" id="cdH" min="0" max="23" value="0"></label>
+          <label for="cdM">Minutes<input type="number" id="cdM" min="0" max="59" value="25"></label>
+          <label for="cdS">Seconds<input type="number" id="cdS" min="0" max="59" value="0"></label>
+          <button class="btn blue small" id="cdSetBtn" type="submit">Set time</button>
+        </form>
+      </div>
+      <div class="ringbox">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--pink-mid)"/><stop offset="1" style="stop-color:var(--blue-mid)"/></linearGradient></defs>
+          <circle class="track" cx="100" cy="100" r="90"/>
+          <circle class="arc" id="arc" cx="100" cy="100" r="90" stroke="url(#rg)"/>
+        </svg>
+        <div class="digits" id="digits" role="timer">00:00</div>
+        <div class="kind" id="kindLbl">Focus</div>
+      </div>
+      <p class="who" id="timerWho"></p>
+      <div class="btns">
+        <button class="btn primary" id="startBtn" type="button">Start</button>
+        <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+      </div>
+      <p class="today" id="todayTotal"></p>
+      <p class="note">Both of you see the same clock. A chime plays when a countdown ends. Break time is not counted as study time.</p>
     </section>
 
     <section class="card targets tp" aria-labelledby="targetsH">
@@ -388,7 +479,7 @@ th{font-weight:600;color:var(--muted);font-size:12.5px}
         <div class="cdots" id="nColors" role="group" aria-label="Note colour">
           <button type="button" class="cdot pk on" data-c="pink" aria-label="Pink note"></button>
           <button type="button" class="cdot bl" data-c="blue" aria-label="Blue note"></button>
-              </div>
+           </div>
         <button class="btn blue" id="nAdd" type="submit">Stick it</button>
       </form>
       <div class="wall" id="wall"></div>
@@ -513,7 +604,7 @@ window.__b1=function () {
         };
         var pres = { away: false, typing: false }, seenAt = {}, lastPeers = "";
         var pref = base.collection("presence").doc(uid);
-                    function beat() { return pref.set({ away: pres.away, typing: pres.typing, beat: Date.now() }, { merge: true }); }
+         function beat() { return pref.set({ away: pres.away, typing: pres.typing, beat: Date.now() }, { merge: true }); }
         var room = {
           presence: function (patch) { Object.assign(pres, patch || {}); return beat(); },
           onPeers: function (cb, errCb) {
@@ -636,7 +727,7 @@ window.__b2=function () {
     var hh = Math.floor(m / 60), r = m % 60;
     return hh ? (r ? hh + "h" + r + "m" : hh + "h") : m + "m";
    }
-     var STEPS = [30, 60, 120, 180, 240, 360, 480, 720, 960, 1440].map(function (m) { return m * 60000; });
+  var STEPS = [30, 60, 120, 180, 240, 360, 480, 720, 960, 1440].map(function (m) { return m * 60000; });
   function niceMax(ms) {
     for (var i = 0; i < STEPS.length; i++) if (ms <= STEPS[i]) return STEPS[i];
     return STEPS[STEPS.length - 1];
@@ -781,8 +872,8 @@ window.__b2=function () {
       if (i >= 0) arr[i] = full; else arr.unshift(full);
     }
     saveLocal(); renderAll();
-                   }
-     async function updateDoc(coll, id, patch) {
+   }
+   async function updateDoc(coll, id, patch) {
     if (ctx.mode === "shared") { await ctx.db.doc(coll + "/" + id).update(patch); return; }
     state[coll].forEach(function (x) {
       if (x.id !== id) return;
@@ -1064,7 +1155,7 @@ window.__b2=function () {
     if (!text || locked()) return false;
     try {
       await addDoc("chat", { text: text.slice(0, 500), by: ctx.uid, createdAt: Date.now(), big: !!big });
-     return true;
+       return true;
     } catch (e) { handleErr(e); return false; }
   }
 
@@ -1290,7 +1381,7 @@ window.__b2=function () {
   function renderChat() {
     var list = $("chatList");
     var near = firstChat || list.scrollHeight - list.scrollTop - list.clientHeight < 90;
-       var msgs = state.chat.slice().sort(function (a, b) { return (a.createdAt || 0) - (b.createdAt || 0); });
+     var msgs = state.chat.slice().sort(function (a, b) { return (a.createdAt || 0) - (b.createdAt || 0); });
     var kids = msgs.map(function (m) {
       var mine = m.by === ctx.uid;
       var head = h("div", { class: "mhead" }, avatarOf(m.by) + " " + whoName(m.by) + " · " + timeOf(m.createdAt || Date.now()));
@@ -1481,7 +1572,7 @@ window.__b2=function () {
           r.ms > 0 ? h("span", { class: "val", text: fmtShort(r.ms) }) : null,
           h("span", { class: "fill" + (r.ms > 0 ? " has" : "") })),
         h("div", { class: "dl" }, h("b", { text: r.label }), h("span", { text: String(r.date) })),
-                                                                     r.done > 0 ? h("span", { class: "td", text: String(r.done) }) : h("span", { class: "td none", text: "–" })));
+   r.done > 0 ? h("span", { class: "td", text: String(r.done) }) : h("span", { class: "td none", text: "–" })));
     });
     fill($("cols"), kids);
     $("plot").setAttribute("role", "img");
@@ -1591,7 +1682,7 @@ window.__b2=function () {
       renderNotes(); refreshNames();
     }, onErr);
     ctx.db.collection("people").onSnapshot(function (s) {
-         state.people = docs(s); loaded.people = true;
+       state.people = docs(s); loaded.people = true;
       renderAll(); refreshNames();
       if (!seenSent) { seenSent = true; touchSeen(); }
     }, onErr);
@@ -1735,7 +1826,7 @@ window.__b2=function () {
   fill($("avOpts"), AVATARS.map(function (a) {
     return h("button", { type: "button", class: "opt", "data-v": a, "aria-label": "Buddy " + a, onclick: function () { saveMe({ avatar: a }); } }, a);
   }));
-       fill($("moodOpts"), MOODS.map(function (m) {
+   fill($("moodOpts"), MOODS.map(function (m) {
     return h("button", { type: "button", class: "opt", "data-v": m, "aria-label": "Mood " + m, onclick: function () { saveMe({ mood: m }); } }, m);
   }));
   $("statusForm").addEventListener("submit", function (e) {
@@ -1848,7 +1939,7 @@ async function hash(t){var b=await crypto.subtle.digest("SHA-256",new TextEncode
 var H="a4cd0dae92c26f5ad5da4578aea72700e3664069a967302539a0cc89b0d50a8f";
 async function chk(){if(await hash($("pw").value.trim())===H){try{sessionStorage.setItem("sb-ok","1")}catch(e){}go()}else{$("pwe").textContent="Wrong password";$("pw").value=""}}
 $("pwb").onclick=chk;$("pw").onkeydown=function(e){if(e.key==="Enter")chk()};
-                                                                                                                                                                 var ok=false;try{ok=sessionStorage.getItem("sb-ok")==="1"}catch(e){}
+   var ok=false;try{ok=sessionStorage.getItem("sb-ok")==="1"}catch(e){}
 if(ok)go();
 // Mivi
 var hist=[];$("mivi").onclick=function(){$("mp").classList.toggle("on")};
@@ -1861,4 +1952,3 @@ $("mf").onsubmit=async function(e){e.preventDefault();var q=$("mi").value.trim()
  catch(x){w.textContent="Mivi could not connect. Try again."}};
 })();
 </script></body></html>
-                       
