@@ -105,3 +105,29 @@ function rt(){bs.forEach(function(b,i){var v=st.c[i];b.textContent=v===" "?"":v;
 gs.textContent=st.w==="D"?"Draw!":st.w?(st.w===m?"You win! \uD83C\uDF89":"Friend wins"):!m&&st.x&&st.o?"Game is full":(!m?"Tap a box to join as "+(st.x?"O":"X"):(st.n===m?"Your turn ("+m+")":"Waiting for friend..."))}
 g.onSnapshot(function(d){st=d.exists?d.data():E;rt()});rt();
 }})();
+(function(){
+  function fix(){
+    var box=document.querySelector('.xyt');
+    if(!box) return;
+    var f=box.querySelector('iframe');
+    var b=box.querySelector('.rmv-btn');
+    if(f&&!b){
+      b=document.createElement('button');
+      b.className='rmv-btn';
+      b.textContent='✕ Remove video';
+      b.style.cssText='margin-top:8px;padding:6px 12px;border:0;border-radius:10px;background:#f5b5c5;cursor:pointer;font-weight:600';
+      b.onclick=function(){
+        var fr=box.querySelector('iframe');
+        if(fr) fr.remove();
+        b.remove();
+        box.querySelectorAll('*').forEach(function(e){
+          if(e.style&&e.style.display==='none') e.style.display='';
+        });
+        var i=box.querySelector('input');
+        if(i){ i.value=''; i.focus(); }
+      };
+      f.insertAdjacentElement('afterend',b);
+    }
+  }
+  setInterval(fix,800);
+})();
