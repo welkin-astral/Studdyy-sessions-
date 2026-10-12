@@ -100,7 +100,7 @@ function win(c){var L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[
 function mv(i){var s=Object.assign({},st),m=me();if(s.w||s.c[i]!==" ")return;
 if(!m){if(!s.x){s.x=uid;m="X"}else if(!s.o){s.o=uid;m="O"}else return}
 if(s.n!==m)return;var a=s.c.split("");a[i]=m;s.c=a.join("");s.w=win(s.c);s.n=m==="X"?"O":"X";g.set(s).catch(function(){})}
-rb.onclick=function(){g.set({c:E.c,x:"",o:"",n:"X",w:""}).catch(function(){})};
+rb.onclick=function(){var r=Math.random()<.5?"X":"O";g.set({c:E.c,x:r==="X"?uid:"",o:r==="O"?uid:"",n:"X",w:""}).catch(function(){})};
 function rt(){bs.forEach(function(b,i){var v=st.c[i];b.textContent=v===" "?"":v;b.className=v===" "?"":v});var m=me();
 gs.textContent=st.w==="D"?"Draw!":st.w?(st.w===m?"You win! \uD83C\uDF89":"Friend wins"):!m&&st.x&&st.o?"Game is full":(!m?"Tap a box to join as "+(st.x?"O":"X"):(st.n===m?"Your turn ("+m+")":"Waiting for friend..."))}
 g.onSnapshot(function(d){st=d.exists?d.data():E;rt()});rt();
