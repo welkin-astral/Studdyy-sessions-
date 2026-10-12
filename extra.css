@@ -44,3 +44,18 @@ input:focus-visible{outline-color:var(--coral)}
 .xttt button.X{color:var(--pink)}.xttt button.O{color:var(--blue)}
 .xs{text-align:center;font-weight:600}
 .xyt iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:18px;display:block;background:#000;margin-top:10px}
+.xcp{width:38px;height:38px;border:0;padding:0;border-radius:50%;background:none;cursor:pointer}
+.xthick{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--muted)}.xthick input{flex:1;accent-color:var(--pink)}
+:root[data-theme=dark]{--lav-soft:#3A3560}
+/* night mode fixes */
+:root[data-theme=dark] .timer{background:linear-gradient(145deg,#2B1626,#2A2340 55%,#18233F)}
+:root[data-theme=dark] .tile.p{background:linear-gradient(135deg,#4A1F38,#3A2540)}
+:root[data-theme=dark] .tile.b{background:linear-gradient(135deg,#1D3159,#2A2F5C)}
+:root[data-theme=dark] .chatlist{background:#1B1E3A}
+:root[data-theme=dark] .card{border-color:#2E3262;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+:root[data-theme=dark] .hb.p{background:#4A1F38}:root[data-theme=dark] .hb.b{background:#1D3159}
+:root[data-theme=dark] .xe{background:#2B1626;border-color:#2E3262}
+:root[data-theme=dark] .xb,:root[data-theme=dark] .xp,:root[data-theme=dark] .xttt button{background:#3A3560;color:#ECEEFB}
+:root[data-theme=dark] .btn.ghost,:root[data-theme=dark] .pchip,:root[data-theme=dark] .snd,:root[data-theme=dark] .stk,:root[data-theme=dark] .opt,:root[data-theme=dark] .seg,:root[data-theme=dark] .emobtn{background:#242850;color:#ECEEFB;border-color:#434A85}
+:root[data-theme=dark] .segb{color:#A3A8CC}
+:root[data-theme=dark] input[type=text],:root[data-theme=dark] input[type=search],:root[data-theme=dark] input[type=number],:root[data-theme=dark] select{background:#242850;color:#ECEEFB;border-color:#434A85}
