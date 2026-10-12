@@ -59,3 +59,4 @@ input:focus-visible{outline-color:var(--coral)}
 :root[data-theme=dark] .btn.ghost,:root[data-theme=dark] .pchip,:root[data-theme=dark] .snd,:root[data-theme=dark] .stk,:root[data-theme=dark] .opt,:root[data-theme=dark] .seg,:root[data-theme=dark] .emobtn{background:#242850;color:#ECEEFB;border-color:#434A85}
 :root[data-theme=dark] .segb{color:#A3A8CC}
 :root[data-theme=dark] input[type=text],:root[data-theme=dark] input[type=search],:root[data-theme=dark] input[type=number],:root[data-theme=dark] select{background:#242850;color:#ECEEFB;border-color:#434A85}
+.delmsg{font-size:18px!important;padding:2px 8px!important;background:var(--lav-soft)!important;color:var(--ink)!important;border-radius:8px!important;margin-left:4px}
