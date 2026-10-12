@@ -1,4 +1,5 @@
 (function(){
+  if(window.__xrun)return;window.__xrun=1;
 function LS(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 var T=setInterval(function(){
