@@ -36,6 +36,20 @@ ping();setInterval(ping,6e4);setInterval(rw,6e4);
 seen.onSnapshot(function(s){var now=Date.now();rows=[];s.docs.forEach(function(d){var v=d.data()||{},a=now-(v.t||0);
 if(a>864e5){if(d.id!==uid)d.ref.delete().catch(function(){});return}rows.push({n:v.name||"Friend",age:a,me:d.id===uid})});
 rows.sort(function(a,b){return a.age-b.age});rw()});
+// manage people
+var mc2=card("\uD83E\uDDF9","Remove old people (offline)"),ml2=h("div","xex"),ra=h("button","xb","Remove all offline"),pp=[],pr={};
+mc2.append(ml2,ra);
+function offl(){var n=Date.now();return pp.filter(function(p){return p.id!==uid&&!(pr[p.id]&&n-pr[p.id]<45000)})}
+function rm(id){["people","presence","seen","boards"].forEach(function(c){base.collection(c).doc(id).delete().catch(function(){})})}
+function mr(){ml2.replaceChildren();var o=offl();
+o.forEach(function(p){var r=h("div","xe"),l=h("div"),b=h("button","xb","Remove");
+l.append(h("b",null,p.name||"Friend"),h("small",null,p.ls?"last seen "+new Date(p.ls).toLocaleString([],{dateStyle:"medium",timeStyle:"short"}):"offline"));
+b.onclick=function(){if(confirm("Remove "+(p.name||"Friend")+"?"))rm(p.id)};r.append(l,b);ml2.append(r)});
+if(!o.length)ml2.append(h("p","empty","No offline people."));ra.hidden=!o.length}
+ra.onclick=function(){var o=offl();if(o.length&&confirm("Remove "+o.length+" offline people?"))o.forEach(function(p){rm(p.id)})};
+base.collection("people").onSnapshot(function(s){pp=s.docs.map(function(d){var v=d.data()||{};return{id:d.id,name:v.name,ls:v.lastSeen}});mr()});
+base.collection("presence").onSnapshot(function(s){pr={};s.docs.forEach(function(d){pr[d.id]=(d.data()||{}).beat||0});mr()});
+setInterval(mr,2e4);
 // boards
 var W=800,H=500,bc=card("\uD83C\uDFA8","Drawing boards");
 function cv(){var c=h("canvas","xcv");c.width=W;c.height=H;return c}
@@ -43,11 +57,15 @@ function draw(c,ss){var g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,W
 ss.forEach(function(s){var p=s.p;g.strokeStyle=s.c;g.lineWidth=s.w;g.beginPath();g.moveTo(p[0],p[1]);if(p.length<4)g.lineTo(p[0]+.1,p[1]);for(var i=2;i<p.length;i+=2)g.lineTo(p[i],p[i+1]);g.stroke()})}
 var fl=h("div","xlab","Friend's board (live, view only)"),ft=cv(),ml=h("div","xlab","My board (draw here)"),mc=cv(),tl=h("div","xtools");
 bc.append(fl,ft,ml,mc,tl);draw(ft,[]);draw(mc,[]);
-var mine=[],col="#C2478A",sz=5,cur=null,tm=0,loaded=false,bd=base.collection("boards");
+var mine=[],col="#D4577F",sz=5,cur=null,tm=0,loaded=false,bd=base.collection("boards");
 function fire(){tm=0;var j=JSON.stringify(mine);if(j.length>9e5){alert("Board is full. Press Clear.");return}bd.doc(uid).set({name:name,s:j,t:Date.now()}).catch(function(){})}
 function save(){if(!tm)tm=setTimeout(fire,300)}
-["#C2478A","#3F78CF","#8E6FE0","#3B2F63","#FFFFFF"].forEach(function(c){var b=h("button","xc"+(c===col?" on":""));b.style.background=c;b.title=c==="#FFFFFF"?"Eraser":"Colour";
-b.onclick=function(){col=c;sz=c==="#FFFFFF"?24:5;tl.querySelectorAll(".xc").forEach(function(x){x.classList.remove("on")});b.classList.add("on")};tl.append(b)});
+var sw=["#D4577F","#FF8F76","#F4C95D","#5BBE8A","#6B7FD7","#8E6FE0","#3B2F63"];
+function pick(c,b){col=c;tl.querySelectorAll(".xc").forEach(function(x){x.classList.remove("on")});if(b)b.classList.add("on")}
+sw.forEach(function(c){var b=h("button","xc"+(c===col?" on":""));b.style.background=c;b.onclick=function(){pick(c,b)};tl.append(b)});
+var cp=h("input");cp.type="color";cp.value="#D4577F";cp.className="xcp";cp.title="Any colour";cp.oninput=function(){pick(cp.value,null)};tl.append(cp);
+var er=h("button","xb","Eraser");er.onclick=function(){pick("#FFFFFF",null)};tl.append(er);
+var tw=h("div","xthick"),tr=h("input"),tv=h("span",null,sz+"px");tr.type="range";tr.min=1;tr.max=40;tr.value=sz;tr.oninput=function(){sz=+tr.value;tv.textContent=sz+"px"};tw.append(h("span",null,"Thickness"),tr,tv);bc.append(tw);
 var u=h("button","xb","Undo");u.onclick=function(){mine.pop();draw(mc,mine);fire()};
 var cl=h("button","xb","Clear");cl.onclick=function(){if(confirm("Clear my board?")){mine=[];draw(mc,mine);fire()}};tl.append(u,cl);
 function pt(e){var r=mc.getBoundingClientRect();return[Math.round((e.clientX-r.left)/r.width*W),Math.round((e.clientY-r.top)/r.height*H)]}
