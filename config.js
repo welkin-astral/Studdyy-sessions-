@@ -12,3 +12,4 @@ window.SB_FIREBASE = {
 window.SB_ROOM = "r378xs7q6bjureq874dcdb";
 (function(){var l=document.createElement("link");l.rel="stylesheet";l.href="extra.css";document.head.appendChild(l);var s=document.createElement("script");s.src="extra.js";s.defer=true;document.head.appendChild(s)})();
 window.SB_MIVI_URL = "https://mivi.mukherjeeakash899.workers.dev/";
+(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="extra.css";document.head.appendChild(l);var s=document.createElement("script");s.src="extra.js";s.defer=true;document.head.appendChild(s)})();
