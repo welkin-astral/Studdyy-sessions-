@@ -26,6 +26,12 @@ function rf(){ei=-1;en.value=es.value=ed.value="";ea.textContent="Add exam";ex2.
 ea.onclick=function(){var t=new Date(ed.value).getTime();if(!(en.value.trim()||es.value.trim())||isNaN(t)){alert("Exam name or subject, and date + time daalo");return}
 var o={n:en.value.trim().slice(0,40),s:es.value.trim().slice(0,40),t:t};if(ei>=0)ex[ei]=o;else{if(ex.length>=5){alert("Maximum 5 exams");return}ex.push(o)}sv();rf();er()};
 ex2.onclick=rf;er();setInterval(er,3e4);
+// clear chat
+(function(){var t=setInterval(function(){var hd=document.querySelector(".chat .card-head");if(!hd)return;clearInterval(t);
+var b=h("button","xb","Clear chat");hd.append(b);
+b.onclick=async function(){if(!confirm("Delete ALL chat messages for both of you?"))return;b.disabled=true;
+try{var s=await base.collection("chat").get(),db=firebase.firestore(),i=0;
+while(i<s.docs.length){var w=db.batch();s.docs.slice(i,i+400).forEach(function(d){w.delete(d.ref)});await w.commit();i+=400}}catch(e){alert("Could not clear chat")}b.disabled=false}},500)})();
 // who
 var wc=card("\uD83D\uDC65","Who's here (last 24 hours)"),wl=h("div","xwho");wc.append(wl);var rows=[];
 function ago(ms){var m=Math.round(ms/6e4);return m<60?m+" min ago":Math.round(m/60)+" h ago"}
