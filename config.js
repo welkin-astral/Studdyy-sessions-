@@ -10,3 +10,4 @@ window.SB_FIREBASE = {
 };
 // Your private room code. Leave as is, or change to anything long and random.
 window.SB_ROOM = "r378xs7q6bjureq874dcdb";
+(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="extra.css";document.head.appendChild(l);var s=document.createElement("script");s.src="extra.js";s.defer=true;document.head.appendChild(s)})();
